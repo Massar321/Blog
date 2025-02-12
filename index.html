@@ -16,15 +16,9 @@
             animation: backgroundAnimation 15s infinite alternate;
         }
         @keyframes backgroundAnimation {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         .container {
             width: 80%;
@@ -73,15 +67,25 @@
             opacity: 0;
             animation: fadeIn 1s ease-out forwards 0.5s;
         }
+        .counter-buttons {
+            margin: 20px 0;
+        }
+        .counter-btn {
+            background: #0078D4;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .counter-btn:hover {
+            background: #005A9C;
+        }
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
     <!-- Calendly link widget begin -->
@@ -107,7 +111,7 @@
     <a href="https://github.com/Massar321" target="_blank" style="background: black;">Mon GitHub</a>
     <a href="https://gitlab.com/Massar111" target="_blank" style="background: orange;">Mon GitLab</a>
     <a href="https://www.linkedin.com/in/mahamat-ali-massar-9a7a81116/" target="_blank" style="background: #0077b5;">Mon LinkedIn</a>
-    <a href="https://medium.com/@massar-mahamat" target="_blank" style="background: #000000;">Mon Blog Medium</a>
+    <a href="https://medium.com/@mahamatalimassar_27932" target="_blank" style="background: #000000;">Mon Blog Medium</a>
 
     <h2>Contactez-moi :</h2>
     <a href="mailto:massar.mhd.ali@gmail.com" style="background: #D44638;">Me contacter via Gmail</a>
@@ -123,8 +127,42 @@
     <h2>Télécharger mon CV :</h2>
     <a href="MASSAR-BI.pdf" download style="background: #4CAF50;">📄 Télécharger mon CV</a>
     
+    <!-- Boutons du compteur de vues et likes -->
+    <div class="counter-buttons">
+        <button class="counter-btn">👁️ Vues : <span id="viewCount">0</span></button>
+        <button class="counter-btn" onclick="incrementLikes()">❤️ J'aime : <span id="likeCount">0</span></button>
+    </div>
+
     <footer>
         <p>&copy; 2025 Mon Blog - Tous droits réservés</p>
     </footer>
+
+    <script>
+        // Fonction pour incrémenter le nombre de vues
+        function incrementViews() {
+            let views = localStorage.getItem("viewCount");
+            views = views ? parseInt(views) + 1 : 1;
+            localStorage.setItem("viewCount", views);
+            document.getElementById("viewCount").innerText = views;
+        }
+
+        // Fonction pour incrémenter le nombre de likes
+        function incrementLikes() {
+            let likes = localStorage.getItem("likeCount");
+            likes = likes ? parseInt(likes) + 1 : 1;
+            localStorage.setItem("likeCount", likes);
+            document.getElementById("likeCount").innerText = likes;
+        }
+
+        // Charger les valeurs enregistrées au chargement de la page
+        window.onload = function() {
+            let views = localStorage.getItem("viewCount") || 0;
+            let likes = localStorage.getItem("likeCount") || 0;
+            document.getElementById("viewCount").innerText = views;
+            document.getElementById("likeCount").innerText = likes;
+            incrementViews(); // Ajouter une vue à chaque visite
+        }
+    </script>
+
 </body>
 </html>
