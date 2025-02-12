@@ -157,19 +157,10 @@
         }
 
         window.onload = function() {
-<<<<<<< HEAD
             let postId = "post-1";  
             document.getElementById("viewCount-" + postId).innerText = localStorage.getItem("viewCount-" + postId) || 0;
             document.getElementById("likeCount-" + postId).innerText = localStorage.getItem("likeCount-" + postId) || 0;
             incrementViews(postId);
-=======
-            let views = localStorage.getItem("viewCount") || 0;
-            let likes = localStorage.getItem("likeCount") || 0;
-            document.getElementById("viewCount").innerText = views;
-            document.getElementById("likeCount").innerText = likes;
-            incrementViews(); // Ajouter une vue à chaque visite
-            incrementLikes(); // Ajouter une vue à chaque like
->>>>>>> 47007d380471c7fe2a7e73177358ad98d6dbe005
         }
     </script>
 
